@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ItemForm from "./ItemForm";
 import Filter from "./Filter";
 import Item from "./Item";
@@ -10,6 +10,15 @@ function ShoppingList() {
   function handleCategoryChange(category) {
     setSelectedCategory(category);
   }
+
+    // -------------------------------------------------------------------------
+    // 1.Displaying Items - use useEffect to fetch data from http://localhost:4000/items
+    useEffect(() => {
+      fetch("http://localhost:4000/items")
+      .then(res => res.json())
+      .then(data => setItems(data))
+    }, [])
+    // ------------------------------------------------------------------------
 
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
