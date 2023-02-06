@@ -11,6 +11,15 @@ function Item({ item, onUpdateItem }) {
       isInCart: !item.isInCart
     }
 
+    // fetch PATCH request
+    fetch(`http://localhost:4000/items/${item.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json",},
+      body: JSON.stringify(updated)
+    })
+    .then(res => res.json())
+    .then(updatedItem => onUpdateItem(updatedItem))
+
   }
 
 
