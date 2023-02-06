@@ -21,6 +21,13 @@ function Item({ item, onUpdateItem }) {
     .then(updatedItem => onUpdateItem(updatedItem))
 
   }
+  // -----------------------------------------------------------
+
+  // ------------------------------------------------------------
+  function handleDeleteClick() {
+    console.log(item)
+  }
+  // ------------------------------------------------------------
 
 
   return (
@@ -30,7 +37,7 @@ function Item({ item, onUpdateItem }) {
       <button className={item.isInCart ? "remove" : "add"} onClick={handleAddtoCartClick}>
         {item.isInCart ? "Remove From" : "Add to"} Cart
       </button>
-      <button className="remove">Delete</button>
+      <button className="remove" onClick={handleDeleteClick}>Delete</button>
     </li>
   );
 }
