@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 
-function ItemForm() {
+function ItemForm( { onAddItem } ) {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
 
+  // -------------------------------------------------------------------
+  // 2. Create items: Add function to handle submissions
+  function handleSubmit(e) {
+    e.preventDefault()
+
+  // -------------------------------------------------------------------
+
   return (
-    <form className="NewItem">
+    <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
         <input
