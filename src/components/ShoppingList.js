@@ -12,6 +12,20 @@ function ShoppingList() {
   }
 
   // -------------------------------------------------------------------
+  // 3. Update items: create a callback for Item to update items
+  function handleUpdateItem(updatedItem) {
+    const updatedItems = items.map(item => {
+      if (item.id === updatedItem.id) {
+        return updatedItem
+      } else {
+        return item
+      }
+    }) 
+    setItems(updatedItems)
+  }
+  // -------------------------------------------------------------------
+
+  // -------------------------------------------------------------------
   // 2. Create items: create a callback for ItemForm to update items
   function onAddItem(newItem) {
     setItems(...items, newItem)
@@ -42,7 +56,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} />
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem}/>
         ))}
       </ul>
     </div>
