@@ -11,6 +11,13 @@ function ShoppingList() {
     setSelectedCategory(category);
   }
 
+  // -------------------------------------------------------------------
+  // 2. Create items: create a callback for ItemForm to update items
+  function onAddItem(newItem) {
+    setItems(...items, newItem)
+  }
+  // -------------------------------------------------------------------
+
     // -------------------------------------------------------------------------
     // 1.Displaying Items - use useEffect to fetch data from http://localhost:4000/items
     useEffect(() => {
@@ -28,7 +35,7 @@ function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <ItemForm />
+      <ItemForm onAddItem={onAddItem}/>
       <Filter
         category={selectedCategory}
         onCategoryChange={handleCategoryChange}
