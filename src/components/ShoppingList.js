@@ -16,7 +16,7 @@ function ShoppingList() {
     useEffect(() => {
       fetch("http://localhost:4000/items")
       .then(res => res.json())
-      .then(data => setItems(data))
+      .then(data => setItems(data)) // update items state variable
     }, [])
     // ------------------------------------------------------------------------
 
