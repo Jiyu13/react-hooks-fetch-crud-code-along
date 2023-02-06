@@ -9,6 +9,13 @@ function ItemForm( { onAddItem } ) {
   function handleSubmit(e) {
     e.preventDefault()
 
+    // create item using data from form state
+    const formData = {
+      name: name,
+      category: category,
+      isInCart: false,
+    }
+    console.log(formData)
   // -------------------------------------------------------------------
 
   return (
