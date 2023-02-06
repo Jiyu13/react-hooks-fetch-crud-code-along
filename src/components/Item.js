@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Item({ item }) {
+function Item({ item, onUpdateItem }) {
 
   // 3. Update items:
   // Add function to handle button click
   function handleAddtoCartClick() {
-    console.log("clicked item:", item)
+
+    // updated isInCart to true
+    const updated = {
+      isInCart: !item.isInCart
+    }
+
   }
 
 
