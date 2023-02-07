@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Item({ item, onUpdateItem }) {
+function Item({ item, onUpdateItem, onDeleteItem }) {
 
   // 3. Update items:
   // Add function to handle button click
@@ -24,8 +24,17 @@ function Item({ item, onUpdateItem }) {
   // -----------------------------------------------------------
 
   // ------------------------------------------------------------
+  // 4. Delete items:
+  // create onClick events for delete button
   function handleDeleteClick() {
-    console.log(item)
+    // console.log(item)
+    
+    // DELETE request,  Call onDeleteItem, passing the deleted item
+    fetch(`http://localhost:4000/items/${item.id}`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(() => onDeleteItem(item))
   }
   // ------------------------------------------------------------
 
