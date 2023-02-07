@@ -36,8 +36,8 @@ function ShoppingList() {
 
   // -------------------------------------------------------------------
   // 2. Create items: create a callback for ItemForm to update items
-  function onAddItem(newItem) {
-    setItems(...items, newItem)
+  function handleAddItem(newItem) {
+    setItems([...items, newItem])
   }
   // -------------------------------------------------------------------
 
@@ -50,15 +50,15 @@ function ShoppingList() {
     }, [])
     // ------------------------------------------------------------------------
 
-  const itemsToDisplay = items.filter((item) => {
-    if (selectedCategory === "All") return true;
-
-    return item.category === selectedCategory;
-  });
+    const itemsToDisplay = items.filter((item) => {
+      if (selectedCategory === "All") return true;
+  
+      return item.category === selectedCategory;
+    });
 
   return (
     <div className="ShoppingList">
-      <ItemForm onAddItem={onAddItem}/>
+      <ItemForm onAddItem={handleAddItem}/>
       <Filter
         category={selectedCategory}
         onCategoryChange={handleCategoryChange}
