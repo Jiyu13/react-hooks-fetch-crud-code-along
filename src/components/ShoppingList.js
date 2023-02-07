@@ -12,6 +12,15 @@ function ShoppingList() {
   }
 
   // -------------------------------------------------------------------
+  // 4. Delete items: create a callback for Item to update items without the deleted item
+  function handleDeleteItem(deletedItem) {
+    const updatedItems = items.filter(item => item.id !== deletedItem.id) 
+    setItems(updatedItems)
+  }
+  // -------------------------------------------------------------------
+
+
+  // -------------------------------------------------------------------
   // 3. Update items: create a callback for Item to update items
   function handleUpdateItem(updatedItem) {
     const updatedItems = items.map(item => {
@@ -56,7 +65,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem}/>
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem} onDeleteItem={handleDeleteItem}/>
         ))}
       </ul>
     </div>
